@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func ExecuteMigrations(database *gorm.DB)  {
+func ExecuteMigrations(database *gorm.DB) {
 	err := database.AutoMigrate(entities.User{}, entities.Address{})
 
 	if err != nil {
