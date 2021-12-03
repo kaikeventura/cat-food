@@ -2,8 +2,10 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/kaikeventura/cat-food/ms-onboarding/configuration/database"
 	"github.com/kaikeventura/cat-food/ms-onboarding/configuration/server/routes"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/adapters/inbound/controllers"
+	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/adapters/outbound/persistence"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/services"
 	"log"
 )
@@ -28,6 +30,7 @@ func (server *Server) Run() {
 	log.Fatal(router.Run(":" + server.port))
 }
 
-func dependencyInjection()  {
-	controllers.ConstructUserController(services.ConstructUserService())
+func dependencyInjection() {
+	mySQLPersistence := persistence.ConstructMySQLUserPersistence(database.GetDatabase())
+	controllers.ConstructUserController(services.ConstructUserService(mySQLPersistence))
 }

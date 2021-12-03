@@ -8,7 +8,7 @@ import (
 
 var userService inbound.UserServicePort
 
-func ConstructUserController(service inbound.UserServicePort)  {
+func ConstructUserController(service inbound.UserServicePort) {
 	userService = service
 }
 
@@ -24,9 +24,15 @@ func CreateUser(context *gin.Context) {
 		return
 	}
 
-	var result = userService.CreateNewUser(user)
+	var result, createUserError = userService.CreateNewUser(user)
 
-	context.JSON(200, gin.H{
-		"success": result,
-	})
+	if createUserError != nil {
+		context.JSON(400, gin.H{
+			"error": "Cannot create user: " + err.Error(),
+		})
+
+		return
+	}
+
+	context.JSON(200, result)
 }
