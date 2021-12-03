@@ -1,6 +1,10 @@
 package domain
 
 type UserDomain struct {
-	Name string `json:"name"`
-	Age  int8   `json:"age"`
+	FirstName string `json:"first_name"`
+	LastName string `json:"last_name"`
+	BirthDate string `json:"birth_date"`
+	Document string `json:"document"`
+	UserType string `json:"user_type"`
+	Address Address `json:"address"`
 }
