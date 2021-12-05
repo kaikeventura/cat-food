@@ -1,7 +1,9 @@
 package domain
 
-type UserDomain struct {
-	Identifier string    `json:"identifier"`
+import "github.com/google/uuid"
+
+type User struct {
+	Identifier uuid.UUID `json:"identifier"`
 	FirstName  string    `json:"first_name"`
 	LastName   string    `json:"last_name"`
 	BirthDate  string    `json:"birth_date"`

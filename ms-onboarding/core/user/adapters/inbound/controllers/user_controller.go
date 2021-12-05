@@ -13,7 +13,7 @@ func ConstructUserController(service inbound.UserServicePort) {
 }
 
 func CreateUser(context *gin.Context) {
-	var user domain.UserDomain
+	var user domain.User
 	err := context.ShouldBindJSON(&user)
 
 	if err != nil {

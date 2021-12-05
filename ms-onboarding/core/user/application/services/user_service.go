@@ -16,7 +16,7 @@ func ConstructUserService(persistence outbound.UserPersistencePort) *UserService
 	return &UserService{}
 }
 
-func (UserService) CreateNewUser(user domain.UserDomain) (domain.UserDomain, error) {
+func (UserService) CreateNewUser(user domain.User) (domain.User, error) {
 
 	return userPersistence.SaveUser(user)
 }
