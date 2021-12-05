@@ -19,24 +19,8 @@ func ConstructMySQLUserPersistence(databaseRepository *gorm.DB) *MySQLUserPersis
 }
 
 func (MySQLUserPersistence) SaveUser(user domain.UserDomain) (domain.UserDomain, error) {
-	address := []entities.Address {
-		{
-			Street: user.Address[0].Street,
-			Number: user.Address[0].Number,
-			District: user.Address[0].District,
-			City: user.Address[0].City,
-			State: user.Address[0].State,
-		},
-	}
-
-	userEntity := entities.User{
-		FirstName: user.FirstName,
-		LastName: user.LastName,
-		BirthDate: user.BirthDate,
-		Document: user.Document,
-		UserType: user.UserType,
-		Address: address,
-	}
+	addressesEntity := buildAddressesEntity(user.Address)
+	userEntity := buildUserEntity(user, addressesEntity)
 	err := database.Create(&userEntity).Error
 
 	if err != nil {
@@ -44,4 +28,50 @@ func (MySQLUserPersistence) SaveUser(user domain.UserDomain) (domain.UserDomain,
 	}
 
 	return user, err
+}
+
+func buildAddressesEntity(addresses []domain.Address) []entities.Address {
+	if !checkForAddresses(addresses) {
+		return []entities.Address{}
+	}
+
+	return addressesDomainToAddressesEntity(addresses)
+}
+
+func checkForAddresses(addresses []domain.Address) bool {
+	return len(addresses) > 0 || addresses != nil
+}
+
+func addressesDomainToAddressesEntity(addressesDomain []domain.Address) []entities.Address {
+	var addressesEntity []entities.Address
+	for _, address := range addressesDomain {
+		addressesEntity = append(addressesEntity,
+			entities.Address{
+				Street:   address.Street,
+				Number:   address.Number,
+				District: address.District,
+				City:     address.City,
+				State:    address.State,
+			},
+		)
+	}
+
+	return addressesEntity
+}
+
+func buildUserEntity(userDomain domain.UserDomain, addressesEntity []entities.Address) entities.User {
+	userEntity := userDomainToUserEntity(userDomain)
+	userEntity.Address = addressesEntity
+
+	return userEntity
+}
+
+func userDomainToUserEntity(userDomain domain.UserDomain) entities.User {
+	return entities.User{
+		FirstName: userDomain.FirstName,
+		LastName:  userDomain.LastName,
+		BirthDate: userDomain.BirthDate,
+		Document:  userDomain.Document,
+		UserType:  userDomain.UserType,
+	}
 }
