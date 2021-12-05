@@ -17,6 +17,8 @@ func AddressesDomainToAddressesEntity(addressesDomain []domain.Address) []entiti
 				City:       address.City,
 				State:      address.State,
 				PostalCode: address.PostalCode,
+				Main:       address.Main,
+				Surname:    address.Surname,
 			},
 		)
 	}
@@ -36,6 +38,8 @@ func AddressesEntityToAddressesDomain(addressesEntity []entities.Address) []doma
 				City:       address.City,
 				State:      address.State,
 				PostalCode: address.PostalCode,
+				Main:       address.Main,
+				Surname:    address.Surname,
 			},
 		)
 	}

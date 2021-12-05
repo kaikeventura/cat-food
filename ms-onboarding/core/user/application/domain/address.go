@@ -11,4 +11,5 @@ type Address struct {
 	State      string    `json:"state"`
 	PostalCode string    `json:"postal_code"`
 	Main       bool      `json:"main"`
+	Surname    string    `json:"surname"`
 }

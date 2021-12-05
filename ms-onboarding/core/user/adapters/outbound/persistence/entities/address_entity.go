@@ -15,5 +15,7 @@ type Address struct {
 	City       string    `gorm:"not null"`
 	State      string    `gorm:"not null"`
 	PostalCode string    `gorm:"not null"`
+	Main       bool      `gorm:"not null"`
+	Surname    string    `gorm:"not null"`
 	UserId     uint
 }
