@@ -28,7 +28,7 @@ func CreateUser(context *gin.Context) {
 
 	if createUserError != nil {
 		context.JSON(400, gin.H{
-			"error": "Cannot create user: " + err.Error(),
+			"error": createUserError.Error(),
 		})
 
 		return
