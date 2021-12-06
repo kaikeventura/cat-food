@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  onboardin_mysql:
-    container_name: onboardin_mysql
+  onboarding_mysql:
+    container_name: onboarding_mysql
     image: mysql
     restart: always
     environment:

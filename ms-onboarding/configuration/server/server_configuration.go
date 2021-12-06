@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/kaikeventura/cat-food/ms-onboarding/configuration/server/routes"
 	"log"
+	"os"
 )
 
 type Server struct {
@@ -13,7 +14,7 @@ type Server struct {
 
 func NewServer() Server {
 	return Server{
-		port: "5000",
+		port: os.Getenv("SERVER_PORT"),
 		server: gin.Default(),
 	}
 }
