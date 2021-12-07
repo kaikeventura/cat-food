@@ -21,15 +21,30 @@ func ConstructMySQLUserPersistence(databaseRepository *gorm.DB) *MySQLUserPersis
 }
 
 func (MySQLUserPersistence) SaveUser(user domain.User) (domain.User, error) {
-	addressesEntity := buildAddressesEntity(user.Address)
+	addressesEntity := buildAddressesEntity(user.Addresses)
 	userEntity := buildUserEntity(user, addressesEntity)
 	err := database.Create(&userEntity).Error
 
 	if err != nil {
 		log.Print("Persistence error: " + err.Error())
+
+		return domain.User{}, err
 	}
 
 	return converters.UserEntityToUserDomain(userEntity), err
+}
+
+func (MySQLUserPersistence) FindUserByIdentifier(identifier uuid.UUID) (domain.User, error) {
+	var user entities.User
+	err := database.Preload("Addresses").Joins("INNER JOIN addresses ON addresses.user_id = users.id").Where("users.identifier = ?", identifier).First(&user).Error
+
+	if err != nil {
+		log.Print("Find user error: " + err.Error())
+
+		return domain.User{}, err
+	}
+
+	return converters.UserEntityToUserDomain(user), err
 }
 
 func buildAddressesEntity(addresses []domain.Address) []entities.Address {
@@ -56,7 +71,7 @@ func addRandomUUIDToAddresses(addressesEntity []entities.Address) {
 func buildUserEntity(userDomain domain.User, addressesEntity []entities.Address) entities.User {
 	userEntity := converters.UserDomainToUserEntity(userDomain)
 	userEntity.Identifier, _ = uuid.NewRandom()
-	userEntity.Address = addressesEntity
+	userEntity.Addresses = addressesEntity
 
 	return userEntity
 }

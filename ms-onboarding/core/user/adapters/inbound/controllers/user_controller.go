@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/domain"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/port/inbound"
 )
@@ -24,15 +25,40 @@ func CreateUser(context *gin.Context) {
 		return
 	}
 
-	var result, createUserError = userService.CreateNewUser(user)
+	var newUser, createUserError = userService.CreateNewUser(user)
 
 	if createUserError != nil {
-		context.JSON(400, gin.H{
+		context.JSON(404, gin.H{
 			"error": createUserError.Error(),
 		})
 
 		return
 	}
 
-	context.JSON(200, result)
+	context.JSON(200, newUser)
+}
+
+func GetUser(context *gin.Context) {
+	identifier := context.Param("identifier")
+	identifierUUID, err := uuid.Parse(identifier)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": "Identifier has to be UUID",
+		})
+
+		return
+	}
+	
+	user, err := userService.FindUser(identifierUUID)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+
+		return
+	}
+
+	context.JSON(200, user)
 }
