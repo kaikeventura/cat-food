@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/kaikeventura/cat-food/ms-partners/core/partner/adapters/inbound/controllers"
+	"github.com/kaikeventura/cat-food/ms-partner/core/partner/adapters/inbound/controllers"
 )
 
 func ConfigurationRouter(router *gin.Engine) *gin.Engine {

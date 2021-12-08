@@ -1,6 +1,6 @@
 package main
 
-import "github.com/kaikeventura/cat-food/ms-partners/configuration/server"
+import "github.com/kaikeventura/cat-food/ms-partner/configuration/server"
 
 func main() {
 	startServer()

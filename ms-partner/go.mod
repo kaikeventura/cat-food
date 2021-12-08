@@ -1,4 +1,4 @@
-module github.com/kaikeventura/cat-food/ms-partners
+module github.com/kaikeventura/cat-food/ms-partner
 
 go 1.17
 

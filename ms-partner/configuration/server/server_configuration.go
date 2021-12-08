@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/kaikeventura/cat-food/ms-partners/configuration/server/routes"
+	"github.com/kaikeventura/cat-food/ms-partner/configuration/server/routes"
 	"log"
 )
 
