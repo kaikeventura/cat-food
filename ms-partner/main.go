@@ -2,12 +2,18 @@ package main
 
 import (
 	"github.com/kaikeventura/cat-food/ms-partner/configuration/container"
+	"github.com/kaikeventura/cat-food/ms-partner/configuration/database"
 	"github.com/kaikeventura/cat-food/ms-partner/configuration/server"
 )
 
 func main() {
+	startDatabase()
 	startDependencyInjection()
 	startServer()
+}
+
+func startDatabase() {
+	database.RunDatabase()
 }
 
 func startServer() {
@@ -15,6 +21,6 @@ func startServer() {
 	serverGin.Run()
 }
 
-func startDependencyInjection()  {
+func startDependencyInjection() {
 	container.RunDependencyInjection()
 }

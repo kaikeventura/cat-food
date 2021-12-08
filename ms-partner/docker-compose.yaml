@@ -1,0 +1,10 @@
+services:
+  partner_mysql:
+    container_name: partner_mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: partner
+    ports:
+      - "3307:3306"

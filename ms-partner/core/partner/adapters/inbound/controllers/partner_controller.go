@@ -34,5 +34,5 @@ func CreatePartner(context *gin.Context) {
 		return
 	}
 
-	context.JSON(200, newPartner)
+	context.JSON(201, newPartner)
 }
