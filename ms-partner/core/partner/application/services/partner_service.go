@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/domain"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/port/outbound"
 )
@@ -18,9 +19,14 @@ func ConstructPartnerService(partnerPersistencePort outbound.PartnerPersistenceP
 }
 
 func (service PartnerService) CreateNewPartner(partner domain.Partner) (domain.Partner, error) {
-	_, err := service.onboardingClient.CheckIfUserExists(partner.UserIdentifier)
+	userStatus, err := service.onboardingClient.CheckIfUserExists(partner.UserIdentifier)
+
 	if err != nil {
 		return domain.Partner{}, err
+	}
+
+	if userStatus.Status != "ENABLED" {
+		return domain.Partner{}, errors.New("error")
 	}
 
 	createdPartner, err := service.partnerPersistence.SavePartner(partner)

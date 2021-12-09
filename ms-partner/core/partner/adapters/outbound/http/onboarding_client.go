@@ -1,9 +1,9 @@
 package http
 
 import (
+	"encoding/json"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/sub_domain"
 	"io"
-	"log"
 	"net/http"
 	"os"
 )
@@ -21,20 +21,28 @@ func (OnboardingClient) CheckIfUserExists(userIdentifier string) (sub_domain.Use
 
 	resp, err := http.Get(url + uri + "/" + userIdentifier)
 	if err != nil {
+		// TODO
 		return sub_domain.UserStatusResponse{}, err
 	}
 
 	switch resp.StatusCode {
 	case 200:
-		defer resp.Body.Close()
 		body, IOErr := io.ReadAll(resp.Body)
+
 		if IOErr != nil {
+			// TODO
 			return sub_domain.UserStatusResponse{}, err
 		}
 
-		log.Print(body)
+		var userStatus sub_domain.UserStatusResponse
+		err := json.Unmarshal(body, &userStatus)
 
-		return sub_domain.UserStatusResponse{}, err
+		if err != nil {
+			// TODO
+			return sub_domain.UserStatusResponse{}, err
+		}
+
+		return userStatus, err
 	default:
 		return sub_domain.UserStatusResponse{}, err
 	}

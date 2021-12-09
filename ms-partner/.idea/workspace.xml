@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bedf925f-a080-44ee-a72e-ad79a7fc1659" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/sub_domain/user_status.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/configuration/server/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/configuration/server/routes/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/inbound/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/inbound/controllers/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/entities/user_entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/entities/user_entity.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/mysql_user_persistence.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/mysql_user_persistence.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/utils/converters/user_converter.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/utils/converters/user_converter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/domain/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/domain/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/inbound/user_service_port.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/inbound/user_service_port.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/outbound/user_persistence_port.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/outbound/user_persistence_port.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/services/user_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/services/user_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/partner/application/sub_domain/client_responses.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/sub_domain/client_responses.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/adapters/outbound/http/onboarding_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/adapters/outbound/http/onboarding_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +58,8 @@
         <env name="DATABASE_PORT" value="3307" />
         <env name="DATABASE_NAME" value="partner" />
         <env name="SERVER_PORT" value="5001" />
+        <env name="MS_ONBOARDING_URL" value="http://localhost:5000" />
+        <env name="MS_ONBOARDING_USER_STATUS_URI" value="/v1/users/status" />
       </envs>
       <EXTENSION ID="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
@@ -92,6 +86,8 @@
         <env name="DATABASE_PORT" value="3307" />
         <env name="DATABASE_NAME" value="partner" />
         <env name="SERVER_PORT" value="5001" />
+        <env name="MS_ONBOARDING_URL" value="http://localhost:5000" />
+        <env name="MS_ONBOARDING_USER_STATUS_URI" value="/v1/users/status" />
       </envs>
       <EXTENSION ID="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
