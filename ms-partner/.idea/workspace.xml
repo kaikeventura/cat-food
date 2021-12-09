@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bedf925f-a080-44ee-a72e-ad79a7fc1659" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/partner/adapters/utils/address_converter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/partner/adapters/utils/partner_converter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ms-partner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ms-partner.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/container/container_configuration.go" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/container/container_configuration.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/database/database_configuration.go" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/database/database_configuration.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/adapters/outbound/persistence/mysql_partner_persistence.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/adapters/outbound/persistence/mysql_partner_persistence.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/application/domain/address.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/domain/address.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/application/domain/partner.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/domain/partner.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="221mqE29Sln50nj9MmVyOiwUxsI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="ms-partner" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <envs>
+        <env name="DATABASE_USER" value="root" />
+        <env name="DATABASE_PASSWORD" value="root" />
+        <env name="DATABASE_HOST" value="localhost" />
+        <env name="DATABASE_PORT" value="3307" />
+        <env name="DATABASE_NAME" value="partner" />
+        <env name="SERVER_PORT" value="5001" />
+      </envs>
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ms-partner" />
+      <working_directory value="$PROJECT_DIR$" />
+      <envs>
+        <env name="DATABASE_USER" value="root" />
+        <env name="DATABASE_PASSWORD" value="root" />
+        <env name="DATABASE_HOST" value="localhost" />
+        <env name="DATABASE_PORT" value="3307" />
+        <env name="DATABASE_NAME" value="partner" />
+        <env name="SERVER_PORT" value="5001" />
+      </envs>
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="ms-partner" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build main.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+</project>
