@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bedf925f-a080-44ee-a72e-ad79a7fc1659" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/partner/adapters/utils/address_converter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/partner/adapters/utils/partner_converter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ms-partner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ms-partner.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/partner/adapters/outbound/http/onboarding_client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/partner/application/port/outbound/onboarding_client_port.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/partner/application/sub_domain/client_responses.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configuration/container/container_configuration.go" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/container/container_configuration.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/database/database_configuration.go" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/database/database_configuration.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/partner/adapters/outbound/persistence/mysql_partner_persistence.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/adapters/outbound/persistence/mysql_partner_persistence.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/partner/application/domain/address.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/domain/address.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/partner/application/domain/partner.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/domain/partner.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
@@ -38,6 +39,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -120,6 +122,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
