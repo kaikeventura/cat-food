@@ -62,3 +62,27 @@ func GetUser(context *gin.Context) {
 
 	context.JSON(200, user)
 }
+
+func UserStatus(context *gin.Context) {
+	identifier := context.Param("identifier")
+	identifierUUID, err := uuid.Parse(identifier)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": "Identifier has to be UUID",
+		})
+
+		return
+	}
+
+	userStatus, err := userService.CheckUserStatus(identifierUUID)
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+
+		return
+	}
+
+	context.JSON(200, userStatus)
+}

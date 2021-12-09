@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bedf925f-a080-44ee-a72e-ad79a7fc1659" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/partner/adapters/outbound/http/onboarding_client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/partner/application/port/outbound/onboarding_client_port.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/partner/application/sub_domain/client_responses.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/sub_domain/user_status.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/configuration/server/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/configuration/server/routes/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/inbound/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/inbound/controllers/user_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/entities/user_entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/entities/user_entity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/mysql_user_persistence.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/outbound/persistence/mysql_user_persistence.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/utils/converters/user_converter.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/adapters/utils/converters/user_converter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/domain/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/domain/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/inbound/user_service_port.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/inbound/user_service_port.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/outbound/user_persistence_port.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/port/outbound/user_persistence_port.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ms-onboarding/core/user/application/services/user_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/core/user/application/services/user_service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/container/container_configuration.go" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/container/container_configuration.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/partner/application/sub_domain/client_responses.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/sub_domain/client_responses.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +52,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ms-onboarding" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">

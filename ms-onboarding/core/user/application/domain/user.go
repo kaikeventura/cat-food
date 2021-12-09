@@ -9,5 +9,6 @@ type User struct {
 	BirthDate  string    `json:"birth_date"`
 	Document   string    `json:"document"`
 	UserType   string    `json:"user_type"`
+	Status     string    `json:"status"`
 	Addresses  []Address `json:"addresses"`
 }

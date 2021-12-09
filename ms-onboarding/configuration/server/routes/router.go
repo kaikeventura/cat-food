@@ -12,6 +12,7 @@ func ConfigurationRouter(router *gin.Engine) *gin.Engine {
 		{
 			users.POST("/", controllers.CreateUser)
 			users.GET("/:identifier", controllers.GetUser)
+			users.GET("/status/:identifier", controllers.UserStatus)
 		}
 	}
 

@@ -14,5 +14,6 @@ type User struct {
 	BirthDate  string    `gorm:"not null"`
 	Document   string    `gorm:"unique; not null"`
 	UserType   string    `gorm:"not null"`
+	Status     string    `gorm:"not null"`
 	Addresses  []Address `gorm:"foreignKey:UserId"`
 }

@@ -13,6 +13,7 @@ func UserDomainToUserEntity(userDomain domain.User) entities.User {
 		BirthDate:  userDomain.BirthDate,
 		Document:   userDomain.Document,
 		UserType:   userDomain.UserType,
+		Status: userDomain.Status,
 		Addresses:  AddressesDomainToAddressesEntity(userDomain.Addresses),
 	}
 }
@@ -25,6 +26,7 @@ func UserEntityToUserDomain(userEntity entities.User) domain.User {
 		BirthDate:  userEntity.BirthDate,
 		Document:   userEntity.Document,
 		UserType:   userEntity.UserType,
+		Status: userEntity.Status,
 		Addresses:  AddressesEntityToAddressesDomain(userEntity.Addresses),
 	}
 }

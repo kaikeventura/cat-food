@@ -5,25 +5,25 @@ import (
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/adapters/outbound/persistence/entities"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/adapters/utils/converters"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/domain"
+	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/sub_domain"
 	"gorm.io/gorm"
 	"log"
 )
 
-var database *gorm.DB
-
 type MySQLUserPersistence struct {
+	database *gorm.DB
 }
 
-func ConstructMySQLUserPersistence(databaseRepository *gorm.DB) *MySQLUserPersistence {
-	database = databaseRepository
-
-	return &MySQLUserPersistence{}
+func ConstructMySQLUserPersistence(databaseRepository *gorm.DB) MySQLUserPersistence {
+	return MySQLUserPersistence{
+		database: databaseRepository,
+	}
 }
 
-func (MySQLUserPersistence) SaveUser(user domain.User) (domain.User, error) {
+func (persistence MySQLUserPersistence) SaveUser(user domain.User) (domain.User, error) {
 	addressesEntity := buildAddressesEntity(user.Addresses)
 	userEntity := buildUserEntity(user, addressesEntity)
-	err := database.Create(&userEntity).Error
+	err := persistence.database.Create(&userEntity).Error
 
 	if err != nil {
 		log.Print("Persistence error: " + err.Error())
@@ -34,9 +34,9 @@ func (MySQLUserPersistence) SaveUser(user domain.User) (domain.User, error) {
 	return converters.UserEntityToUserDomain(userEntity), err
 }
 
-func (MySQLUserPersistence) FindUserByIdentifier(identifier uuid.UUID) (domain.User, error) {
+func (persistence MySQLUserPersistence) FindUserByIdentifier(identifier uuid.UUID) (domain.User, error) {
 	var user entities.User
-	err := database.Preload("Addresses").Joins("INNER JOIN addresses ON addresses.user_id = users.id").Where("users.identifier = ?", identifier).First(&user).Error
+	err := persistence.database.Preload("Addresses").Joins("INNER JOIN addresses ON addresses.user_id = users.id").Where("users.identifier = ?", identifier).First(&user).Error
 
 	if err != nil {
 		log.Print("Find user error: " + err.Error())
@@ -45,6 +45,19 @@ func (MySQLUserPersistence) FindUserByIdentifier(identifier uuid.UUID) (domain.U
 	}
 
 	return converters.UserEntityToUserDomain(user), err
+}
+
+func (persistence MySQLUserPersistence) CheckUserStatus(identifier uuid.UUID) (sub_domain.UserStatus, error) {
+	var user entities.User
+	err := persistence.database.Select("users.status").Where("users.identifier = ?", identifier).First(&user).Error
+
+	if err != nil {
+		log.Print("Find user error: " + err.Error())
+
+		return sub_domain.UserStatus{}, err
+	}
+
+	return sub_domain.UserStatus{Status: user.Status}, nil
 }
 
 func buildAddressesEntity(addresses []domain.Address) []entities.Address {
@@ -71,6 +84,7 @@ func addRandomUUIDToAddresses(addressesEntity []entities.Address) {
 func buildUserEntity(userDomain domain.User, addressesEntity []entities.Address) entities.User {
 	userEntity := converters.UserDomainToUserEntity(userDomain)
 	userEntity.Identifier, _ = uuid.NewRandom()
+	userEntity.Status = "ENABLED"
 	userEntity.Addresses = addressesEntity
 
 	return userEntity
