@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e3b8f70-d814-4c30-a1b8-797e209a1916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ms-onboarding/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/cat-food.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ms-onboarding/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../ms-onboarding/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/partner/application/services/partner_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
