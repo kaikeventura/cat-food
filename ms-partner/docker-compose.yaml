@@ -1,4 +1,20 @@
 services:
+  partner_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: partner_api
+    depends_on:
+      - partner_mysql
+    env_file:
+      - .env
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/app
+    networks:
+      - bubble
+
   partner_mysql:
     container_name: partner_mysql
     image: mysql
@@ -8,3 +24,7 @@ services:
       MYSQL_DATABASE: partner
     ports:
       - "3307:3306"
+
+networks:
+  bubble:
+    external: true

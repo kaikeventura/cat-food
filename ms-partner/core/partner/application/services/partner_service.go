@@ -8,13 +8,13 @@ import (
 
 type PartnerService struct {
 	partnerPersistence outbound.PartnerPersistencePort
-	onboardingClient outbound.OnboardingClientPort
+	onboardingClient   outbound.OnboardingClientPort
 }
 
 func ConstructPartnerService(partnerPersistencePort outbound.PartnerPersistencePort, onboardingClientPort outbound.OnboardingClientPort) PartnerService {
 	return PartnerService{
 		partnerPersistence: partnerPersistencePort,
-		onboardingClient: onboardingClientPort,
+		onboardingClient:   onboardingClientPort,
 	}
 }
 
@@ -26,7 +26,7 @@ func (service PartnerService) CreateNewPartner(partner domain.Partner) (domain.P
 	}
 
 	if userStatus.Status != "ENABLED" {
-		return domain.Partner{}, errors.New("error")
+		return domain.Partner{}, errors.New("User not enabled ")
 	}
 
 	createdPartner, err := service.partnerPersistence.SavePartner(partner)
