@@ -9,5 +9,5 @@ import (
 type UserPersistencePort interface {
 	SaveUser(user domain.User) (domain.User, error)
 	FindUserByIdentifier(identifier uuid.UUID) (domain.User, error)
-	CheckUserStatus(identifier uuid.UUID) (sub_domain.UserStatus, error)
+	GetUserDetails(identifier uuid.UUID) (sub_domain.UserStatus, error)
 }

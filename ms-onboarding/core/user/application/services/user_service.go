@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+
 	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/domain"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/port/outbound"
@@ -31,8 +32,8 @@ func (service UserService) FindUser(identifier uuid.UUID) (domain.User, error) {
 	return service.userPersistence.FindUserByIdentifier(identifier)
 }
 
-func (service UserService) CheckUserStatus(identifier uuid.UUID) (sub_domain.UserStatus, error) {
-	return service.userPersistence.CheckUserStatus(identifier)
+func (service UserService) UserDetails(identifier uuid.UUID) (sub_domain.UserStatus, error) {
+	return service.userPersistence.GetUserDetails(identifier)
 }
 
 func checkIfASingleAddressIsThePrimary(addresses []domain.Address) error {

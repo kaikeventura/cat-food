@@ -1,13 +1,14 @@
 package persistence
 
 import (
+	"log"
+
 	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/adapters/outbound/persistence/entities"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/adapters/utils/converters"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/domain"
 	"github.com/kaikeventura/cat-food/ms-onboarding/core/user/application/sub_domain"
 	"gorm.io/gorm"
-	"log"
 )
 
 type MySQLUserPersistence struct {
@@ -47,9 +48,9 @@ func (persistence MySQLUserPersistence) FindUserByIdentifier(identifier uuid.UUI
 	return converters.UserEntityToUserDomain(user), err
 }
 
-func (persistence MySQLUserPersistence) CheckUserStatus(identifier uuid.UUID) (sub_domain.UserStatus, error) {
+func (persistence MySQLUserPersistence) GetUserDetails(identifier uuid.UUID) (sub_domain.UserStatus, error) {
 	var user entities.User
-	err := persistence.database.Select("users.status").Where("users.identifier = ?", identifier).First(&user).Error
+	err := persistence.database.Select("users.status, users.user_type").Where("users.identifier = ?", identifier).First(&user).Error
 
 	if err != nil {
 		log.Print("Find user error: " + err.Error())
@@ -57,7 +58,7 @@ func (persistence MySQLUserPersistence) CheckUserStatus(identifier uuid.UUID) (s
 		return sub_domain.UserStatus{}, err
 	}
 
-	return sub_domain.UserStatus{Status: user.Status}, nil
+	return sub_domain.UserStatus{Status: user.Status, UserType: user.UserType}, nil
 }
 
 func buildAddressesEntity(addresses []domain.Address) []entities.Address {

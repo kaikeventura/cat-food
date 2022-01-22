@@ -49,7 +49,7 @@ func GetUser(context *gin.Context) {
 
 		return
 	}
-	
+
 	user, err := userService.FindUser(identifierUUID)
 
 	if err != nil {
@@ -63,7 +63,7 @@ func GetUser(context *gin.Context) {
 	context.JSON(200, user)
 }
 
-func UserStatus(context *gin.Context) {
+func UserDetails(context *gin.Context) {
 	identifier := context.Param("identifier")
 	identifierUUID, err := uuid.Parse(identifier)
 
@@ -75,7 +75,7 @@ func UserStatus(context *gin.Context) {
 		return
 	}
 
-	userStatus, err := userService.CheckUserStatus(identifierUUID)
+	userDetails, err := userService.UserDetails(identifierUUID)
 	if err != nil {
 		context.JSON(400, gin.H{
 			"error": err.Error(),
@@ -84,5 +84,5 @@ func UserStatus(context *gin.Context) {
 		return
 	}
 
-	context.JSON(200, userStatus)
+	context.JSON(200, userDetails)
 }

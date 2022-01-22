@@ -9,5 +9,5 @@ import (
 type UserServicePort interface {
 	CreateNewUser(user domain.User) (domain.User, error)
 	FindUser(identifier uuid.UUID) (domain.User, error)
-	CheckUserStatus(identifier uuid.UUID) (sub_domain.UserStatus, error)
+	UserDetails(identifier uuid.UUID) (sub_domain.UserStatus, error)
 }
