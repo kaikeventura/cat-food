@@ -9,8 +9,19 @@ import (
 )
 
 func RunDependencyInjection() {
+	partnerDependencyInjection()
+	menuDependencyInjection()
+}
+
+func partnerDependencyInjection() {
 	mySQLPartnerPersistence := persistence.ConstructMySQLPartnerPersistence(database.GetDatabase())
-	constructOnboardingClient := http.ConstructOnboardingClient()
-	partnerService := services.ConstructPartnerService(mySQLPartnerPersistence, constructOnboardingClient)
+	onboardingClient := http.ConstructOnboardingClient()
+	partnerService := services.ConstructPartnerService(mySQLPartnerPersistence, onboardingClient)
 	controllers.ConstructUserController(partnerService)
+}
+
+func menuDependencyInjection() {
+	mySQLMenuPersistence := persistence.ConstructMySQLMenuPersistence(database.GetDatabase())
+	menuService := services.ConstructMenuService(mySQLMenuPersistence)
+	controllers.ConstructMenuController(menuService)
 }

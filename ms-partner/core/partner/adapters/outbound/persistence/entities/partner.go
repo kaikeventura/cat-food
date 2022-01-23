@@ -13,4 +13,5 @@ type Partner struct {
 	PartnerType    string    `gorm:"not null"`
 	UserIdentifier string    `gorm:"not null"`
 	Address        Address   `gorm:"foreignKey:PartnerId"`
+	Menu           Menu      `gorm:"foreignKey:PartnerId"`
 }
