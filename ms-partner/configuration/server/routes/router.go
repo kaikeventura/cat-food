@@ -8,9 +8,14 @@ import (
 func ConfigurationRouter(router *gin.Engine) *gin.Engine {
 	main := router.Group("v1/")
 	{
-		users := main.Group("partners")
+		partners := main.Group("partners")
 		{
-			users.POST("/", controllers.CreatePartner)
+			partners.POST("/", controllers.CreatePartner)
+		}
+
+		menus := main.Group("menus")
+		{
+			menus.POST("/", controllers.CreateMenu)
 		}
 	}
 
