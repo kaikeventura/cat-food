@@ -1,4 +1,4 @@
-package utils
+package converters
 
 import (
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/adapters/outbound/persistence/entities"

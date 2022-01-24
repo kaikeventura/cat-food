@@ -11,6 +11,7 @@ func ConfigurationRouter(router *gin.Engine) *gin.Engine {
 		partners := main.Group("partners")
 		{
 			partners.POST("/", controllers.CreatePartner)
+			partners.GET("/:user_identifier", controllers.GetPartner)
 		}
 
 		menus := main.Group("menus")

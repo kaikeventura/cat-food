@@ -3,6 +3,7 @@ package services
 import (
 	"errors"
 
+	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/domain"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/port/outbound"
 )
@@ -40,4 +41,14 @@ func (service PartnerService) CreateNewPartner(partner domain.Partner) (domain.P
 	}
 
 	return createdPartner, err
+}
+
+func (service PartnerService) GetPartner(identifier uuid.UUID) (domain.Partner, error) {
+	partner, err := service.partnerPersistence.FindByIdentifier(identifier)
+
+	if err != nil {
+		return domain.Partner{}, err
+	}
+
+	return partner, err
 }

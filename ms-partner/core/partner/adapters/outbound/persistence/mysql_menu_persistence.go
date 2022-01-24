@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/adapters/outbound/persistence/entities"
-	"github.com/kaikeventura/cat-food/ms-partner/core/partner/adapters/utils"
+	"github.com/kaikeventura/cat-food/ms-partner/core/partner/adapters/utils/converters"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/domain"
 	"gorm.io/gorm"
 )
@@ -13,15 +13,12 @@ import (
 var database *gorm.DB
 
 type MySQLMenuPersistence struct {
-	database *gorm.DB
 }
 
 func ConstructMySQLMenuPersistence(databaseRepository *gorm.DB) MySQLMenuPersistence {
 	database = databaseRepository
 
-	return MySQLMenuPersistence{
-		database: databaseRepository,
-	}
+	return MySQLMenuPersistence{}
 }
 
 func (persistence MySQLMenuPersistence) SaveMenu(menu domain.Menu) (domain.Menu, error) {
@@ -39,7 +36,7 @@ func (persistence MySQLMenuPersistence) SaveMenu(menu domain.Menu) (domain.Menu,
 		return domain.Menu{}, err
 	}
 
-	return utils.MenuEntityToMenuDomain(menuEntity, menu.PartnerIdentifier), nil
+	return converters.MenuEntityToMenuDomain(menuEntity, menu.PartnerIdentifier), nil
 }
 
 func buildMenuEntity(menu domain.Menu) (entities.Menu, error) {
