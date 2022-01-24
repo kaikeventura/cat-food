@@ -22,6 +22,6 @@ func PartnerEntityToPartnerDomain(partnerEntity entities.Partner) domain.Partner
 		PartnerType:    partnerEntity.PartnerType,
 		UserIdentifier: partnerEntity.UserIdentifier,
 		Address:        AddressEntityToAddressDomain(partnerEntity.Address),
-		Menu:           MenuEntityToMenuDomain(partnerEntity.Menu, partnerEntity.Identifier.String()),
+		Menu:           MenuEntityToMenuDomain(partnerEntity.Menu, ""),
 	}
 }
