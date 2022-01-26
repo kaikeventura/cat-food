@@ -7,7 +7,7 @@ services:
     depends_on:
       - partner_mysql
     env_file:
-      - .env
+      - .env-docker
     ports:
       - "5001:5001"
     volumes:
@@ -24,6 +24,8 @@ services:
       MYSQL_DATABASE: partner
     ports:
       - "3307:3306"
+    networks:
+      - bubble
 
 networks:
   bubble:
