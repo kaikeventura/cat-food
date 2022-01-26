@@ -79,7 +79,28 @@ func UpdateMenuItem(context *gin.Context) {
 }
 
 func RemoveMenuItem(context *gin.Context) {
+	menuItemIdentifier := context.Param("menu_item_identifier")
+	identifierUUID, err := uuid.Parse(menuItemIdentifier)
 
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": "Identifier has to be UUID",
+		})
+
+		return
+	}
+
+	err = menuService.DeleteMenuItem(identifierUUID)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+
+		return
+	}
+
+	context.JSON(204, nil)
 }
 
 func ListMenuItems(context *gin.Context) {
@@ -104,5 +125,5 @@ func ListMenuItems(context *gin.Context) {
 		return
 	}
 
-	context.JSON(201, menuItems)
+	context.JSON(200, menuItems)
 }

@@ -36,10 +36,24 @@ func (service MenuService) CreateNewMenuItem(menuIdentifier uuid.UUID, menuItem 
 	return createdMenuItem, nil
 }
 
+func (service MenuService) DeleteMenuItem(menuItemIdentifier uuid.UUID) error {
+	err := service.menuPersistence.DeleteMenuItemByIdentifier(menuItemIdentifier)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (service MenuService) ListMenuItems(menuIdentifier uuid.UUID) ([]domain.MenuItem, error) {
 	menuItems, err := service.menuPersistence.ListMenuItemsByMenuIdentifier(menuIdentifier)
 
 	if err != nil {
+		return []domain.MenuItem{}, err
+	}
+
+	if len(menuItems) == 0 {
 		return []domain.MenuItem{}, err
 	}
 
