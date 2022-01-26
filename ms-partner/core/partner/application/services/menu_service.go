@@ -1,6 +1,7 @@
 package services
 
 import (
+	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/domain"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/port/outbound"
 )
@@ -16,11 +17,21 @@ func ConstructMenuService(menuPersistencePort outbound.MenuPersistencePort) Menu
 }
 
 func (service MenuService) CreateNewMenu(menu domain.Menu) (domain.Menu, error) {
-	menuCreated, err := service.menuPersistence.SaveMenu(menu)
+	createdMenu, err := service.menuPersistence.SaveMenu(menu)
 
 	if err != nil {
 		return domain.Menu{}, err
 	}
 
-	return menuCreated, nil
+	return createdMenu, nil
+}
+
+func (service MenuService) CreateNewMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error) {
+	createdMenuItem, err := service.menuPersistence.SaveMenuItem(menuIdentifier, menuItem)
+
+	if err != nil {
+		return domain.MenuItem{}, err
+	}
+
+	return createdMenuItem, nil
 }

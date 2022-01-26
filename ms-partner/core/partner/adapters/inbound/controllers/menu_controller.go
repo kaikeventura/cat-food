@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/domain"
 	"github.com/kaikeventura/cat-food/ms-partner/core/partner/application/port/inbound"
 )
@@ -37,14 +38,50 @@ func CreateMenu(context *gin.Context) {
 	context.JSON(201, newMenu)
 }
 
-func AddItem(context *gin.Context) {
+func AddMenuItem(context *gin.Context) {
+	menuIdentifier := context.Param("menu_identifier")
+	identifierUUID, err := uuid.Parse(menuIdentifier)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": "Identifier has to be UUID",
+		})
+
+		return
+	}
+
+	var menuItem domain.MenuItem
+	jsonBindErr := context.ShouldBindJSON(&menuItem)
+
+	if jsonBindErr != nil {
+		context.JSON(400, gin.H{
+			"error": "Cannot bind Json: " + err.Error(),
+		})
+
+		return
+	}
+
+	createdMenuItem, err := menuService.CreateNewMenuItem(identifierUUID, menuItem)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+
+		return
+	}
+
+	context.JSON(201, createdMenuItem)
+}
+
+func UpdateMenuItem(context *gin.Context) {
 
 }
 
-func RemoveItem(context *gin.Context) {
+func RemoveMenuItem(context *gin.Context) {
 
 }
 
-func ListItems(context *gin.Context) {
+func ListMenuItems(context *gin.Context) {
 
 }

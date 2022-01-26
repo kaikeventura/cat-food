@@ -39,9 +39,27 @@ func (persistence MySQLMenuPersistence) SaveMenu(menu domain.Menu) (domain.Menu,
 	return converters.MenuEntityToMenuDomain(menuEntity, menu.PartnerIdentifier), nil
 }
 
+func (persistence MySQLMenuPersistence) SaveMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error) {
+	menuItemEntity, err := buildMenuItemEntity(menuIdentifier, menuItem)
+
+	if err != nil {
+		return domain.MenuItem{}, err
+	}
+
+	err = database.Create(&menuItemEntity).Error
+
+	if err != nil {
+		log.Print("Persistence error: " + err.Error())
+
+		return domain.MenuItem{}, err
+	}
+
+	return converters.MenuItemEntityToMenuItemDomain(menuItemEntity), nil
+}
+
 func buildMenuEntity(menu domain.Menu) (entities.Menu, error) {
 	identifier, _ := uuid.NewRandom()
-	partner, err := findPartnerByIdentifier(menu.PartnerIdentifier)
+	partnerEntity, err := findPartnerByIdentifier(menu.PartnerIdentifier)
 
 	if err != nil {
 		return entities.Menu{}, err
@@ -49,13 +67,13 @@ func buildMenuEntity(menu domain.Menu) (entities.Menu, error) {
 
 	return entities.Menu{
 		Identifier: identifier,
-		PartnerId:  partner.Id,
+		PartnerId:  partnerEntity.Id,
 	}, err
 }
 
 func findPartnerByIdentifier(identifier string) (entities.Partner, error) {
-	var partner entities.Partner
-	err := database.First(&partner, "partners.identifier = ?", identifier).Error
+	var partnerEntity entities.Partner
+	err := database.First(&partnerEntity, "partners.identifier = ?", identifier).Error
 
 	if err != nil {
 		log.Print("Find partner error: " + err.Error())
@@ -63,5 +81,34 @@ func findPartnerByIdentifier(identifier string) (entities.Partner, error) {
 		return entities.Partner{}, err
 	}
 
-	return partner, nil
+	return partnerEntity, nil
+}
+
+func buildMenuItemEntity(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (entities.MenuItem, error) {
+	identifier, _ := uuid.NewRandom()
+	menuEntity, err := findMenuByIdentifier(menuIdentifier.String())
+
+	if err != nil {
+		return entities.MenuItem{}, err
+	}
+
+	menuItemEntity := converters.MenuItemDomainToMenuItemEntity(menuItem)
+	menuItemEntity.Identifier = identifier
+	menuItemEntity.MenuId = menuEntity.Id
+	menuItemEntity.IsActive = true
+
+	return menuItemEntity, nil
+}
+
+func findMenuByIdentifier(identifier string) (entities.Menu, error) {
+	var menuEntity entities.Menu
+	err := database.First(&menuEntity, "menus.identifier = ?", identifier).Error
+
+	if err != nil {
+		log.Print("Find menu error: " + err.Error())
+
+		return entities.Menu{}, err
+	}
+
+	return menuEntity, nil
 }

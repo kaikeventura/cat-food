@@ -10,4 +10,5 @@ type Menu struct {
 	Id         uint      `gorm:"primaryKey; autoIncrement"`
 	Identifier uuid.UUID `gorm:"not null; unique"`
 	PartnerId  uint
+	MenuItems  []MenuItem `gorm:"foreignKey:MenuId"`
 }

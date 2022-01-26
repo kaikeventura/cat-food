@@ -17,9 +17,10 @@ func ConfigurationRouter(router *gin.Engine) *gin.Engine {
 		menus := main.Group("menus")
 		{
 			menus.POST("/", controllers.CreateMenu)
-			menus.POST("/:menu_identifier/items/add", controllers.AddItem)
-			menus.DELETE("/items/:item_identifier/remove", controllers.RemoveItem)
-			menus.GET("/items/:menu_identifier", controllers.ListItems)
+			menus.POST("/:menu_identifier/items/add", controllers.AddMenuItem)
+			menus.POST("/items/:item_identifier/update", controllers.UpdateMenuItem)
+			menus.DELETE("/items/:item_identifier/remove", controllers.RemoveMenuItem)
+			menus.GET("/items/:menu_identifier", controllers.ListMenuItems)
 		}
 	}
 
