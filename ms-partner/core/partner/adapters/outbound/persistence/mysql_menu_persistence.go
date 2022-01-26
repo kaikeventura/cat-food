@@ -73,7 +73,7 @@ func buildMenuEntity(menu domain.Menu) (entities.Menu, error) {
 
 func findPartnerByIdentifier(identifier string) (entities.Partner, error) {
 	var partnerEntity entities.Partner
-	err := database.First(&partnerEntity, "partners.identifier = ?", identifier).Error
+	err := database.Select("partners.id").Where("partners.identifier = ?", identifier).First(&partnerEntity).Error
 
 	if err != nil {
 		log.Print("Find partner error: " + err.Error())
@@ -102,7 +102,7 @@ func buildMenuItemEntity(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (en
 
 func findMenuByIdentifier(identifier string) (entities.Menu, error) {
 	var menuEntity entities.Menu
-	err := database.First(&menuEntity, "menus.identifier = ?", identifier).Error
+	err := database.Select("menus.id").Where("menus.identifier = ?", identifier).First(&menuEntity).Error
 
 	if err != nil {
 		log.Print("Find menu error: " + err.Error())
