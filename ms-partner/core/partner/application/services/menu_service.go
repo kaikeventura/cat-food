@@ -36,6 +36,16 @@ func (service MenuService) CreateNewMenuItem(menuIdentifier uuid.UUID, menuItem 
 	return createdMenuItem, nil
 }
 
+func (service MenuService) UpdateMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error) {
+	updatedMenuItem, err := service.menuPersistence.UpdateMenuItem(menuIdentifier, menuItem)
+
+	if err != nil {
+		return domain.MenuItem{}, err
+	}
+
+	return updatedMenuItem, nil
+}
+
 func (service MenuService) DeleteMenuItem(menuItemIdentifier uuid.UUID) error {
 	err := service.menuPersistence.DeleteMenuItemByIdentifier(menuItemIdentifier)
 

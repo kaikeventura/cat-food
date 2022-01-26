@@ -75,7 +75,39 @@ func AddMenuItem(context *gin.Context) {
 }
 
 func UpdateMenuItem(context *gin.Context) {
+	menuItemIdentifier := context.Param("menu_item_identifier")
+	identifierUUID, err := uuid.Parse(menuItemIdentifier)
 
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": "Identifier has to be UUID",
+		})
+
+		return
+	}
+
+	var menuItem domain.MenuItem
+	jsonBindErr := context.ShouldBindJSON(&menuItem)
+
+	if jsonBindErr != nil {
+		context.JSON(400, gin.H{
+			"error": "Cannot bind Json: " + err.Error(),
+		})
+
+		return
+	}
+
+	updatedMenuItem, err := menuService.UpdateMenuItem(identifierUUID, menuItem)
+
+	if err != nil {
+		context.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+
+		return
+	}
+
+	context.JSON(200, updatedMenuItem)
 }
 
 func RemoveMenuItem(context *gin.Context) {

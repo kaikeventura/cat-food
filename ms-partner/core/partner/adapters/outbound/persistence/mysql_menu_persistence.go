@@ -69,6 +69,31 @@ func (MySQLMenuPersistence) DeleteMenuItemByIdentifier(menuItemIdentifier uuid.U
 	return nil
 }
 
+func (MySQLMenuPersistence) UpdateMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error) {
+	var menuItemEntity entities.MenuItem
+	err := database.First(&menuItemEntity, "menu_items.identifier = ?", menuIdentifier.String()).Error
+
+	if err != nil {
+		log.Print("Find menu error: " + err.Error())
+
+		return domain.MenuItem{}, err
+	}
+
+	menuItemEntity.Name = menuItem.Name
+	menuItemEntity.Description = menuItem.Description
+	menuItemEntity.Price = menuItem.Price
+
+	err = database.Save(&menuItemEntity).Error
+
+	if err != nil {
+		log.Print("Error when updating: " + err.Error())
+
+		return domain.MenuItem{}, err
+	}
+
+	return converters.MenuItemEntityToMenuItemDomain(menuItemEntity), nil
+}
+
 func (MySQLMenuPersistence) ListMenuItemsByMenuIdentifier(menuIdentifier uuid.UUID) ([]domain.MenuItem, error) {
 	var menuItemEntities []entities.MenuItem
 	menuEntity, err := findMenuByIdentifier(menuIdentifier.String())
