@@ -21,7 +21,7 @@ func ConstructMySQLMenuPersistence(databaseRepository *gorm.DB) MySQLMenuPersist
 	return MySQLMenuPersistence{}
 }
 
-func (persistence MySQLMenuPersistence) SaveMenu(menu domain.Menu) (domain.Menu, error) {
+func (MySQLMenuPersistence) SaveMenu(menu domain.Menu) (domain.Menu, error) {
 	menuEntity, err := buildMenuEntity(menu)
 
 	if err != nil {
@@ -39,7 +39,7 @@ func (persistence MySQLMenuPersistence) SaveMenu(menu domain.Menu) (domain.Menu,
 	return converters.MenuEntityToMenuDomain(menuEntity, menu.PartnerIdentifier), nil
 }
 
-func (persistence MySQLMenuPersistence) SaveMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error) {
+func (MySQLMenuPersistence) SaveMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error) {
 	menuItemEntity, err := buildMenuItemEntity(menuIdentifier, menuItem)
 
 	if err != nil {
@@ -55,6 +55,23 @@ func (persistence MySQLMenuPersistence) SaveMenuItem(menuIdentifier uuid.UUID, m
 	}
 
 	return converters.MenuItemEntityToMenuItemDomain(menuItemEntity), nil
+}
+
+func (MySQLMenuPersistence) ListMenuItemsByMenuIdentifier(menuIdentifier uuid.UUID) ([]domain.MenuItem, error) {
+	var menuItemEntities []entities.MenuItem
+	menuEntity, err := findMenuByIdentifier(menuIdentifier.String())
+
+	if err != nil {
+		return []domain.MenuItem{}, err
+	}
+
+	err = database.Find(&menuItemEntities, "menu_items.menu_id = ?", menuEntity.Id).Error
+
+	if err != nil {
+		return []domain.MenuItem{}, err
+	}
+
+	return converters.MenuItemEntitiesToMenuItemDomains(menuItemEntities), nil
 }
 
 func buildMenuEntity(menu domain.Menu) (entities.Menu, error) {

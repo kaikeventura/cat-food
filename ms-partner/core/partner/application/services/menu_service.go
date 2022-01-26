@@ -35,3 +35,13 @@ func (service MenuService) CreateNewMenuItem(menuIdentifier uuid.UUID, menuItem 
 
 	return createdMenuItem, nil
 }
+
+func (service MenuService) ListMenuItems(menuIdentifier uuid.UUID) ([]domain.MenuItem, error) {
+	menuItems, err := service.menuPersistence.ListMenuItemsByMenuIdentifier(menuIdentifier)
+
+	if err != nil {
+		return []domain.MenuItem{}, err
+	}
+
+	return menuItems, nil
+}

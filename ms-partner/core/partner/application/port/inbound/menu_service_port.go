@@ -8,4 +8,5 @@ import (
 type MenuServicePort interface {
 	CreateNewMenu(menu domain.Menu) (domain.Menu, error)
 	CreateNewMenuItem(menuIdentifier uuid.UUID, menuItem domain.MenuItem) (domain.MenuItem, error)
+	ListMenuItems(menuIdentifier uuid.UUID) ([]domain.MenuItem, error)
 }

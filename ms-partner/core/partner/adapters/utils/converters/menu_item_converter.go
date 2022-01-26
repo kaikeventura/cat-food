@@ -11,7 +11,6 @@ func MenuItemDomainToMenuItemEntity(menuItem domain.MenuItem) entities.MenuItem 
 		Name:        menuItem.Name,
 		Description: menuItem.Description,
 		Price:       menuItem.Price,
-		IsActive:    menuItem.IsActive,
 	}
 }
 
@@ -21,6 +20,14 @@ func MenuItemEntityToMenuItemDomain(menuItem entities.MenuItem) domain.MenuItem 
 		Name:        menuItem.Name,
 		Description: menuItem.Description,
 		Price:       menuItem.Price,
-		IsActive:    menuItem.IsActive,
 	}
+}
+
+func MenuItemEntitiesToMenuItemDomains(menuItems []entities.MenuItem) []domain.MenuItem {
+	var menuItemDomains []domain.MenuItem
+	for _, menuItemEntity := range menuItems {
+		menuItemDomains = append(menuItemDomains, MenuItemEntityToMenuItemDomain(menuItemEntity))
+	}
+
+	return menuItemDomains
 }
